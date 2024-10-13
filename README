@@ -29,6 +29,7 @@ FTP Connection :
 
 Connect to FTP servers by providing the server IP or hostname.
 Simple editing options for server details before connection.
+
 Netcat (NC) Connection:
 
 Multiple functionalities :
@@ -37,6 +38,11 @@ Listen on a specified port for incoming connections.
 Send files to a target IP over a chosen port.
 Receive files by listening on a designated port.
 Options to review and edit inputs before execution.
+
+Android SSHd:
+
+Start the SSHd service on an Android device.
+Display the current user and network information (using whoami and ifconfig).
 
 
 🚀 Installation
@@ -83,6 +89,8 @@ SSH Connection : Quickly connect to remote servers.
 FTP Connection : Manage FTP server connections.
 
 Netcat Connection : Simplified file transfer and listening.
+
+Android SSHd: Start the SSHd service and view system information.
 
 System Information : Display system IP address.
 
