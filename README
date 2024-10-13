@@ -57,9 +57,9 @@ Install them using your package manager [ manualy ]
 
 >sudo apt install openssh-client ftp netcat
 
-For auto installation run the distro-name
+For auto installation run this command 
 
-#For Debian/Ubuntu
+>install.sh
 
 Clone the repository:
 
