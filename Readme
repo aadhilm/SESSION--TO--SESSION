@@ -43,14 +43,6 @@ Options to review and edit inputs before execution.
 
 To install SESSION--TO--SESSION, follow these steps:
 
-Clone the repository:
-
->git clone 
-
->cd 
-
->chmod +x main
-
 📦 Install Required Packages
 
 Ensure the following packages are installed :
@@ -63,15 +55,23 @@ Install them using your package manager [ manualy ]
 
 # For Debian/Ubuntu
 
-sudo apt install openssh-client ftp netcat
+>sudo apt install openssh-client ftp netcat
 
 For auto installation run the distro-name
 
-# For Debian/Ubuntu
+#For Debian/Ubuntu
+
+Clone the repository:
+
+>git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
+
+>cd 
+
+>chmod +x main
 
 🏃 Run Command
 
-./session
+>./session
 
 
 📋 Tool Categories
