@@ -11,7 +11,6 @@ The script is useful for quickly establishing terminal-to-terminal connections, 
 This script streamlines workflows by integrating SSH, FTP, and Netcat connections into a single environment, enhancing productivity and ease of use for both beginners and experienced users.
 
 
-
 🔧 Features
 
 --System Information --
@@ -40,7 +39,6 @@ Receive files by listening on a designated port.
 Options to review and edit inputs before execution.
 
 
-
 🚀 Installation
 
 To install SESSION--TO--SESSION, follow these steps:
@@ -52,8 +50,6 @@ Clone the repository:
 >cd 
 
 >chmod +x main
-
-
 
 📦 Install Required Packages
 
