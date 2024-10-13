@@ -248,6 +248,34 @@ nc_connection() {
     esac
 }
 
+# Function to handle Android SSHd and system information
+android_sshd() {
+    while true; do
+        echo -e "\nAndroid SSHd Setup and Info:"
+        echo "1) Start SSHd (and display whoami, ifconfig)"
+        echo "2) Return to main menu"
+        read -p "Choose an option (1-2): " android_choice
+
+        case $android_choice in
+            1)
+                echo "Starting SSHd service..."
+                sshd # Assumes SSHd is installed and working
+                echo "Displaying current user (whoami)..."
+                whoami
+                echo "Displaying network information (ifconfig)..."
+                ifconfig
+                ;;
+            2)
+                echo "Returning to main menu..."
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
 # Main script execution
 while true; do
     banner
@@ -263,8 +291,9 @@ while true; do
     echo "1) SSH Connection"
     echo "2) FTP Connection"
     echo "3) NC (Netcat) Connection"
-    echo "4) Exit"
-    read -p "Choose an option (1-4): " choice
+    echo "4) Android SSHd"
+    echo "5) Exit"
+    read -p "Choose an option (1-5): " choice
 
     case $choice in
         1)
@@ -277,6 +306,9 @@ while true; do
             nc_connection
             ;;
         4)
+            android_sshd
+            ;;
+        5)
             echo "Exiting script. Goodbye!"
             exit 0
             ;;
