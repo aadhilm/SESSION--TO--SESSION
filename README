@@ -61,7 +61,7 @@ Install them using your package manager [ manualy ]
 
 # For Debian/Ubuntu
 
->sudo apt install openssh-client ftp netcat
+> sudo apt install openssh-client ftp netcat
 
 For auto installation run this command 
 
