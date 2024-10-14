@@ -67,9 +67,7 @@ For auto installation run this command
 
 >install.sh
 
-Clone the repository:
-
->git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
+Clone the repository: git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
 
 >cd SESSION--TO--SESSION
 
