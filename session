@@ -248,6 +248,39 @@ nc_connection() {
     esac
 }
 
+# Function to enable or disable SSH service on Debian-based systems
+ssh_service_control() {
+    while true; do
+        echo -e "\nSSH Service Control (Debian-based):"
+        echo "1) Enable SSH"
+        echo "2) Disable SSH"
+        echo "3) Return to main menu"
+        read -p "Choose an option (1-3): " ssh_control_choice
+
+        case $ssh_control_choice in
+            1)
+                echo "Enabling SSH service..."
+                sudo systemctl enable ssh
+                sudo systemctl start ssh
+                echo "SSH service enabled."
+                ;;
+            2)
+                echo "Disabling SSH service..."
+                sudo systemctl stop ssh
+                sudo systemctl disable ssh
+                echo "SSH service disabled."
+                ;;
+            3)
+                echo "Returning to main menu..."
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
 # Function to handle Android SSHd and system information
 android_sshd() {
     while true; do
@@ -292,8 +325,9 @@ while true; do
     echo "2) FTP Connection"
     echo "3) NC (Netcat) Connection"
     echo "4) Android SSHd"
-    echo "5) Exit"
-    read -p "Choose an option (1-5): " choice
+    echo "5) SSH Service Control (Debian)"
+    echo "6) Exit"
+    read -p "Choose an option (1-6): " choice
 
     case $choice in
         1)
@@ -309,6 +343,9 @@ while true; do
             android_sshd
             ;;
         5)
+            ssh_service_control
+            ;;
+        6)
             echo "Exiting script. Goodbye!"
             exit 0
             ;;
