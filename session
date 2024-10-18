@@ -138,14 +138,14 @@ get_ip_address() {
     echo "$ip_address"
 }
 
-# Function to handle NC (Netcat) - listening, receiving, file sharing
+# Function to handle NC (Netcat) - listening, receiving, file sharing, and communication
 nc_connection() {
-
     echo "1) Listen on a port"
     echo "2) Receive a file"
     echo "3) Send a file"
-    echo "4) Return to main menu"
-    read -p "Choose an option (1-4): " nc_choice
+    echo "4) NC Communication (Bi-directional Chat)"
+    echo "5) Return to main menu"
+    read -p "Choose an option (1-5): " nc_choice
 
     case $nc_choice in
         1)
@@ -239,16 +239,39 @@ nc_connection() {
             nc "$target" "$port" < "$filename"
             ;;
         4)
-            # Return to main menu
+            # NC Communication (Bi-directional Chat)
+            echo "Setting up NC communication..."
+            echo "1) Listen for connection"
+            echo "2) Connect to listener"
+            read -p "Choose an option (1-2): " comm_choice
+
+            case $comm_choice in
+                1)
+                    read -p "Enter port to listen on: " port
+                    echo "Listening for incoming connection on port $port..."
+                    nc -lvp "$port"
+                    ;;
+                2)
+                    read -p "Enter target IP address: " target
+                    read -p "Enter port to connect to: " port
+                    echo "Connecting to $target on port $port..."
+                    nc "$target" "$port"
+                    ;;
+                *)
+                    echo "Invalid option. Returning to NC menu."
+                    ;;
+            esac
+            ;;
+        5)
             echo "Returning to main menu..."
             ;;
         *)
-            echo "Invalid option. Returning to main menu."
+            echo "Invalid option. Please try again."
             ;;
     esac
 }
 
-# Function to enable or disable SSH service on Debian-based systems
+# Function to control SSH service (Debian-based systems)
 ssh_service_control() {
     while true; do
         echo -e "\nSSH Service Control (Debian-based):"
