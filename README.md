@@ -1,6 +1,6 @@
 # SESSION--TO--SESSION
 
-[![GitHub license](https://img.shields.io/github/license/aadhilm/SESSION--TO--SESSION)](https://github.com/aadhilm/SESSION--TO--SESSION/blob/main/LICENSE)
+[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Network Tools](https://img.shields.io/badge/Network-Tools-5391FE?logo=network)](https://github.com/topics/network-tools)
 [![SSH Ready](https://img.shields.io/badge/SSH-Ready-4EAA25?logo=ssh)](https://github.com/topics/ssh)
 [![FTP Support](https://img.shields.io/badge/FTP-Supported-FF6E00?logo=ftp)](https://github.com/topics/ftp)
