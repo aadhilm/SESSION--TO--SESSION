@@ -1,0 +1,379 @@
+#!/bin/bash
+# Function to display the banner
+banner() {
+    cat << "EOF" | lolcat
+                                          .   ,
+                                        '. '.  \  \
+                                        ._ '-.'. `\  \
+                                          '-._; .'; `-.'. 
+                                        `~-.; '.       '.
+                                          '--,`           '.
+                                            -='.          ;
+                                  .--=~~=-,    -.;        ;
+                                  .-=`;    `~,_.;        /
+                                  `  ,-`'    .-;         |
+                                    .-~`.    .;         ;
+                                      .;.-   .-;         ,\
+                                        `.'   ,=;     .-'  `~.-._
+                                        .';   .';  .'      .'   '-.
+                                          .\  ;  ;        ,.' _  a',
+                                          .'~";-`   ;      ;"~` `'-=.)
+                                        .' .'   . _;  ;',  ;
+                                        '-.._`~`.'  \  ; ; :
+                                            `~'    _'\\_ \\_ 
+                                                  /=`^^=`""/`)-.
+                                                  \ =  _ =     =\
+                                                    `""` `~-. =   ;
+  ____________________ _________ _________.___________    _______                   ___________________                       ____________________ _________ _________.___________    _______   
+ /   _____/\_   _____//   _____//   _____/|   \_____  \   \      \                  \__    ___/\_____  \                     /   _____/\_   _____//   _____//   _____/|   \_____  \   \      \  
+ \_____  \  |    __)_ \_____  \ \_____  \ |   |/   |   \  /   |   \   ______   ______ |    |    /   |   \   ______   ______  \_____  \  |    __)_ \_____  \ \_____  \ |   |/   |   \  /   |   \ 
+ /        \ |        \/        \/        \|   /    |    \/    |    \ /_____/  /_____/ |    |   /    |    \ /_____/  /_____/  /        \ |        \/        \/        \|   /    |    \/    |    \
+/_______  //_______  /_______  /_______  /|___\_______  /\____|__  /                  |____|   \_______  /                  /_______  //_______  /_______  /_______  /|___\_______  /\____|__  /
+        \/         \/        \/        \/             \/         \/                                    \/                           \/         \/        \/        \/             \/         \/ 
+EOF
+
+    echo -e "\n                                              Welcome to the CR42 Script!\n" | lolcat 
+}
+
+# Function to get SSH connection details
+get_ssh_details() {
+    read -p "Enter SSH username: " username
+    read -p "Enter server IP or hostname: " server
+    echo "Choose SSH port:"
+    echo "1) Port 22"
+    echo "2) Port 8022"
+    read -p "Select port (1-2): " port_choice
+    case $port_choice in
+        1)
+            port=22
+            ;;
+        2)
+            port=8022
+            ;;
+        *)
+            echo "Invalid option. Defaulting to port 22."
+            port=22
+            ;;
+    esac
+}
+
+# Function to handle SSH connection
+ssh_connection() {
+    get_ssh_details
+    while true; do
+        echo -e "\nSSH Details:"
+        echo "1) Username: $username"
+        echo "2) Server: $server"
+        echo "3) Port: $port"
+        echo "4) Execute SSH"
+        read -p "Confirm your input (1-3): " edit_choice
+
+        case $edit_choice in
+            1)
+                read -p "Enter SSH username: " username
+                ;;
+            2)
+                read -p "Enter server IP or hostname: " server
+                ;;
+            3)
+                echo "Choose SSH port:"
+                echo "1) Port 22"
+                echo "2) Port 8022"
+                read -p "Select port (1-2): " port_choice
+                case $port_choice in
+                    1)
+                        port=22
+                        ;;
+                    2)
+                        port=8022
+                        ;;
+                    *)
+                        echo "Invalid option. Defaulting to port 22."
+                        port=22
+                        ;;
+                esac
+                ;;
+            4)
+                break
+                ;;
+            *)
+                echo "Invalid choice. Please try again."
+                ;;
+        esac
+    done
+
+    ssh "$username@$server" -p $port
+}
+
+# Function to handle FTP connection
+ftp_connection() {
+    read -p "Enter FTP server IP or hostname: " server
+    while true; do
+        echo -e "\nFTP Details:"
+        echo "Server: $server"
+        echo "1) Edit Server"
+        echo "2) Execute FTP"
+        read -p "Confirm your input (1-2): " edit_choice
+
+        case $edit_choice in
+            1)
+                read -p "Enter FTP server IP or hostname: " server
+                ;;
+            2)
+                break
+                ;;
+            *)
+                echo "Invalid choice. Please try again."
+                ;;
+        esac
+    done
+
+    ftp "$server"
+}
+
+# Function to get system IP address
+get_ip_address() {
+    local ip_address
+    ip_address=$(hostname -I | awk '{print $1}')
+    echo "$ip_address"
+}
+
+# Function to handle NC (Netcat) - listening, receiving, file sharing, and communication
+nc_connection() {
+    echo "1) Listen on a port"
+    echo "2) Receive a file"
+    echo "3) Send a file"
+    echo "4) NC Communication (Bi-directional Chat)"
+    echo "5) Return to main menu"
+    read -p "Choose an option (1-5): " nc_choice
+
+    case $nc_choice in
+        1)
+            # Listen on a port
+            read -p "Enter port to listen on: " port
+            while true; do
+                echo -e "\nListening Details:"
+                echo "Port: $port"
+                echo "1) Edit Port"
+                echo "2) Execute Listening"
+                read -p "Confirm your input (1-2): " edit_choice
+
+                case $edit_choice in
+                    1)
+                        read -p "Enter port to listen on: " port
+                        ;;
+                    2)
+                        break
+                        ;;
+                    *)
+                        echo "Invalid choice. Please try again."
+                        ;;
+                esac
+            done
+            nc -lvp "$port"
+            ;;
+        2)
+            # Receive a file
+            read -p "Enter port to receive file on: " port
+            read -p "Enter file name to save: " filename
+            while true; do
+                echo -e "\nReceiving Details:"
+                echo "Port: $port"
+                echo "Filename: $filename"
+                echo "1) Edit Port"
+                echo "2) Edit Filename"
+                echo "3) Execute Receiving"
+                read -p "Confirm your input (1-3): " edit_choice
+
+                case $edit_choice in
+                    1)
+                        read -p "Enter port to receive file on: " port
+                        ;;
+                    2)
+                        read -p "Enter file name to save: " filename
+                        ;;
+                    3)
+                        break
+                        ;;
+                    *)
+                        echo "Invalid choice. Please try again."
+                        ;;
+                esac
+            done
+            nc -lvp "$port" > "$filename"
+            ;;
+        3)
+            # Send a file
+            read -p "Enter target IP address: " target
+            read -p "Enter port to send file to: " port
+            read -p "Enter file name to send: " filename
+            while true; do
+                echo -e "\nSending Details:"
+                echo "Target: $target"
+                echo "Port: $port"
+                echo "Filename: $filename"
+                echo "1) Edit Target"
+                echo "2) Edit Port"
+                echo "3) Edit Filename"
+                echo "4) Execute Sending"
+                read -p "Confirm your input (1-4): " edit_choice
+
+                case $edit_choice in
+                    1)
+                        read -p "Enter target IP address: " target
+                        ;;
+                    2)
+                        read -p "Enter port to send file to: " port
+                        ;;
+                    3)
+                        read -p "Enter file name to send: " filename
+                        ;;
+                    4)
+                        break
+                        ;;
+                    *)
+                        echo "Invalid choice. Please try again."
+                        ;;
+                esac
+            done
+            nc "$target" "$port" < "$filename"
+            ;;
+        4)
+            # NC Communication (Bi-directional Chat)
+            echo "Setting up NC communication..."
+            echo "1) Listen for connection"
+            echo "2) Connect to listener"
+            read -p "Choose an option (1-2): " comm_choice
+
+            case $comm_choice in
+                1)
+                    read -p "Enter port to listen on: " port
+                    echo "Listening for incoming connection on port $port..."
+                    nc -lvp "$port"
+                    ;;
+                2)
+                    read -p "Enter target IP address: " target
+                    read -p "Enter port to connect to: " port
+                    echo "Connecting to $target on port $port..."
+                    nc "$target" "$port"
+                    ;;
+                *)
+                    echo "Invalid option. Returning to NC menu."
+                    ;;
+            esac
+            ;;
+        5)
+            echo "Returning to main menu..."
+            ;;
+        *)
+            echo "Invalid option. Please try again."
+            ;;
+    esac
+}
+
+# Function to control SSH service (Debian-based systems)
+ssh_service_control() {
+    while true; do
+        echo -e "\nSSH Service Control (Debian-based):"
+        echo "1) Enable SSH"
+        echo "2) Disable SSH"
+        echo "3) Return to main menu"
+        read -p "Choose an option (1-3): " ssh_control_choice
+
+        case $ssh_control_choice in
+            1)
+                echo "Enabling SSH service..."
+                sudo systemctl enable ssh
+                sudo systemctl start ssh
+                echo "SSH service enabled."
+                ;;
+            2)
+                echo "Disabling SSH service..."
+                sudo systemctl stop ssh
+                sudo systemctl disable ssh
+                echo "SSH service disabled."
+                ;;
+            3)
+                echo "Returning to main menu..."
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Function to handle Android SSHd and system information
+android_sshd() {
+    while true; do
+        echo -e "\nAndroid SSHd Setup and Info:"
+        echo "1) Start SSHd (and display whoami, ifconfig)"
+        echo "2) Return to main menu"
+        read -p "Choose an option (1-2): " android_choice
+
+        case $android_choice in
+            1)
+                echo "Starting SSHd service..."
+                sshd # Assumes SSHd is installed and working
+                echo "Displaying current user (whoami)..."
+                whoami
+                echo "Displaying network information (ifconfig)..."
+                ifconfig
+                ;;
+            2)
+                echo "Returning to main menu..."
+                break
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Main script execution
+while true; do
+    banner
+
+    # Ask if user wants to display IP address
+    read -p "Do you want to display the system IP address? (y/n): " display_ip
+    if [[ "$display_ip" =~ ^[yY]$ ]]; then
+        get_ip_address
+    else
+        echo "IP address will be hidden."
+    fi
+	
+    echo "1) SSH Connection"
+    echo "2) FTP Connection"
+    echo "3) NC (Netcat) Connection"
+    echo "4) Android SSHd"
+    echo "5) SSH Service Control (Debian)"
+    echo "6) Exit"
+    read -p "Choose an option (1-6): " choice
+
+    case $choice in
+        1)
+            ssh_connection
+            ;;
+        2)
+            ftp_connection
+            ;;
+        3)
+            nc_connection
+            ;;
+        4)
+            android_sshd
+            ;;
+        5)
+            ssh_service_control
+            ;;
+        6)
+            echo "Exiting script. Goodbye!"
+            exit 0
+            ;;
+        *)
+            echo "Invalid option. Please try again."
+            ;;
+    esac
+done
