@@ -63,7 +63,9 @@ Ensure these packages are installed:
 #### Manual Installation
 
 # Debian/Ubuntu
-```bash sudo apt install openssh-client ftp netcat```
+```bash
+sudo apt install openssh-client ftp netcat
+```
 
 Open terminal and type the following commands:
 
