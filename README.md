@@ -63,16 +63,17 @@ Ensure these packages are installed:
 #### Manual Installation
 
 # Debian/Ubuntu
-`sudo apt install openssh-client ftp netcat`
+```bash sudo apt install openssh-client ftp netcat```
 
 Open terminal and type the following commands:
 
 Clone the repository:
-`git clone https://github.com/aadhilm/SESSION--TO--SESSION.git`
-`cd SESSION--TO--SESSION`
-`chmod +x main`
-`./install.sh`  # For automatic dependencies
-
+```bash
+git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
+cd SESSION--TO--SESSION
+chmod +x main
+./install.sh  # For automatic dependencies
+```
 🏃 Run Command
 `./session`
 
