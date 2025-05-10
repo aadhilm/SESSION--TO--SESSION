@@ -63,15 +63,18 @@ Ensure these packages are installed:
 #### Manual Installation
 
 # Debian/Ubuntu
-sudo apt install openssh-client ftp netcat
+`sudo apt install openssh-client ftp netcat`
 
-> git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
-> cd SESSION--TO--SESSION
-chmod +x main
-./install.sh  # For automatic dependencies
+Open terminal and type the following commands:
+
+Clone the repository:
+`git clone https://github.com/aadhilm/SESSION--TO--SESSION.git`
+`cd SESSION--TO--SESSION`
+`chmod +x main`
+`./install.sh`  # For automatic dependencies
 
 🏃 Run Command
-./session
+`./session`
 
 📋 Tool Categories
 
@@ -88,7 +91,7 @@ Android SSHd: Start the SSHd service and view system information.
 System Information : Display system IP address.
 
 
-🧑‍💻 Used For :
+## 🧑‍💻 Used For :
 
 System Administrators: Easily access common network utilities without typing complex commands repeatedly.
 
@@ -97,7 +100,7 @@ Beginners: A great tool for learning and practicing basic networking commands in
 Productivity Enthusiasts: Streamline workflows by integrating multiple tools under one menu for easier navigation and task execution.
 
 
-##📝 License
+## 📝 License
 
 This project is open-source and licensed under the Apache License 2.0.
 
