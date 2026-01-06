@@ -11,6 +11,8 @@
 Use this tool at your own risk!
 
 ## 🎯 Introduction
+![SESSION--TO--SESSION Screenshot](session-session.png)
+
 **SESSION--TO--SESSION** is an interactive command-line tool designed to simplify network-related tasks through a user-friendly, menu-based interface. 
 
 Key benefits:
