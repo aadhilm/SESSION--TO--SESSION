@@ -73,7 +73,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/aadhilm/SESSION--TO--SESSION.git
 cd SESSION--TO--SESSION
-chmod +x main
+chmod +x install.sh  session
 ./install.sh  # For automatic dependencies
 ```
 🏃 Run Command
